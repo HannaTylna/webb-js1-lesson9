@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="repon"></div>
+        <script>
+            fetch("https://api.github.com/users/hassanmian/repos")
+            .then(response => response.json())
+            .then(data => /* console.log(data) */ {
+                document.getElementById("repon").innerHTML = `<p>${JSON.stringify(data)}</p>`;
+            });
+            /* let output = '<h2>Repon</h2>'
+                for (let i=0; i < data.length; i++){
+                    for(let j in data[i]){
+                        output += `
+                        <p>${data[i]}:${data[i][j]}</p>
+                        `;
+                    }
+                }
+                document.getElementById("repon").innerHTML = output; */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="coffeeTypes">
+
+        </div>
+        <script>
+            fetch("https://image-mock-data.firebaseio.com/coffeeshop.json")
+            // Gör en anrop
+            .then(response => response.json())
+            // Hämtar ut data från responsen
+            .then(data => {
+                const coffeeTypes = document.getElementById("coffeeTypes")
+                data.forEach(coffee => {
+                    const p = document.createElement("p");
+                    p.innerHTML = coffee.name;
+                    coffeeTypes.appendChild(p)
+                });
+            })
+            // Tillgång till data
+            
+
+        </script>
+    </body>
+</html>

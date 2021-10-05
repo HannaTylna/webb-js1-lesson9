@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="news">
+
+        </div>
+        <script>
+            /* const newsContainer = document.getElementById("news"); */
+            fetch("https://mock-data-api.firebaseio.com/news/articles.json")
+            .then( (response) => {
+                if(response.status <= 399) {
+                    return response.json()
+                } else {
+                    return `Error: ${response.status}`
+                }
+            })
+            .then(data => {
+                let output = '<h2>News</h2>';
+                data.forEach(item => {
+                    output += `
+                    <div>
+                        <h3>${item.title}</h3>
+                        <img src='${item.urlToImage}' alt='${item.title}' width='400'>
+                        <p>${item.content}</p>
+                        <p>${item.description}</p>
+                        <p>${item.id}</p>
+                        <p>Publicerad: ${item.publishedAt}</p>
+                        <a href='${item.url} target='_blank' >Källa: ${item.source.name}</a>
+                        <hr>
+                    </div>
+                    `;
+                    document.getElementById('news').innerHTML = output;
+                })
+            })
+            .catch(err => console.log('Error message', err.statusText))
+            
+        </script>
+    </body>
+</html>
